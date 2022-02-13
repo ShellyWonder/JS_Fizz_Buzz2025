@@ -1,60 +1,51 @@
 //get the values from inputs
-//starts (controller function)
+//controller function
 function getValues() {
   //get values from inputs(DOM)
   let fizzValue = document.getElementById("fizzValue").value;
   let buzzValue = document.getElementById("buzzValue").value;
 
-  //VALIDATE INPUTS to convert strings to integers
+  //VALIDATION:
+  //Parse for numbers(inputs)
   fizzValue = parseInt(fizzValue);
   buzzValue = parseInt(buzzValue);
-
+  //convert strings to integers
   if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
-    //call fizzBuzz():
-    let fbArray = fizzBuzz(fizzValue, buzzValue);
-    //call displayData():
+    let fbArray = fizzBuzz(fizzValue, buzzValue)
+    //Call displayData & write values to the DOM;
     displayData(fbArray);
   } else {
-    alert("You must enter numbers.");
+    alert("Try again. You must enter a number to play Fizz Buzz!")
   }
 }
-
-//generate numbers from fizzValue and buzzValue
-//logic function(for loop)
+//DISPLAY: DO FIZZBUZZ
+// using a ternary operator, to see other options (A & B) check the code page.
 function fizzBuzz(fizzValue, buzzValue) {
   let returnArray = [];
   for (let i = 1; i <= 100; i++) {
-    ///Determining FizzBuzz (3 AND 5) fizz(/3) and buzz(/5)
-    if (i % fizzValue == 0 && i % buzzValue == 0) {
-      returnArray.push("FizzBuzz");
-    } else if (i % fizzValue == 0) {
-      returnArray.push("Fizz");
-    } else if (i % buzzValue == 0) {
-      returnArray.push("Buzz");
-    } else {
-      returnArray.push(i);
-    }
+    let value = (i % fizzValue === 0 ? "Fizz" : "") + (i % buzzValue === 0 ? "Buzz" : "") || i;
+    returnArray.push(value);
   }
   return returnArray;
 }
-
-//display or view functions (RETURN)
+/*loop over the array and create a tablerow for each item. (inserted into td's)*/
 function displayData(fbArray) {
-  //pull in tableBody element from DOM
+  //get tbody element from DOM
   let tableBody = document.getElementById("results");
-  //pull in template row
+
+  //get template element from DOM
   let templateRow = document.getElementById("fbTemplate");
-  //clear the table
+  //clear table
   tableBody.innerHTML = "";
   for (let index = 0; index < fbArray.length; index += 5) {
     let tableRow = document.importNode(templateRow.content, true);
-    //sets up columns by pulling td's content into array
-    //Alt: Modular way to construct HTML without using strings or template literals
-    //interjecting data from the for loop into the DOM 's template element
+
+    /*creates the individual rows for the "td"s 
+    by putting them into array; modular approach to HTML
+     construction without template literals; 
+     dumps into the HTML fragment*/
     let rowCols = tableRow.querySelectorAll("td");
 
-    //injects CSS classes to style "fizz", "buzz" and "FizzBuzz" , adding the value as a class name
-    //add all rows to the table
     rowCols[0].classList.add(fbArray[index]);
     rowCols[0].textContent = fbArray[index];
 
