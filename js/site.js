@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  updateCopyrightYear();
+  document.getElementById("btnSubmit").addEventListener("click", getValues);
+});
+
 //get the values from inputs
 //controller function
 function getValues() {
@@ -63,4 +68,8 @@ function displayData(fbArray) {
 
     tableBody.appendChild(tableRow);
   }
+}
+export function updateCopyrightYear() {
+  const currentYear = new Date().getFullYear();
+  document.getElementById("copyrightYear").textContent = currentYear;
 }
