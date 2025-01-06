@@ -3,6 +3,7 @@
   --sjw-light-color: #eee;
   --sjw-primary-color: #001e43;
   --sjw-secondary-color: #ff993b;
+  --sjw-background-color: #01092b;
 }
 
 /*change logoFont with each project*/
@@ -110,7 +111,7 @@ h6 {
 }
 
 .footer {
-  background-color: var(--sjw-dark-color);
+  background-color: var(--sjw-background-color)!important;
   padding-right: 1rem;
   color: var(--sjw-light-color);
 }
@@ -162,20 +163,6 @@ footer .social > a:hover {
 .fa-ul.animate li:nth-child(7) {
   transition-delay: 0.7s;
 }
-.fa-ul.animate li:nth-child(8) {
-  transition-delay: 0.8s;
-}
-.fa-ul.animate li:nth-child(9) {
-  transition-delay: 0.9s;
-}
-.fa-ul.animate li:nth-child(10) {
-  transition-delay: 1s;
-}
-.fa-ul.animate li:nth-child(11) {
-  transition-delay: 1.1s;
-}
-.fa-ul.animate li:nth-child(12) {
-  transition-delay: 1.2s;
-}
+
 
 /**END checklist animation**/
